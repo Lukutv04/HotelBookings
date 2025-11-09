@@ -12,4 +12,9 @@ public class User
         name = Name;
         password = Password;
     }
+
+     public bool TryLogin(string inputName, string inputPassword)
+    {
+        return name == inputName && password == inputPassword;
+    }
 }
