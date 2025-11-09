@@ -13,12 +13,13 @@ using App;
 
 List<Room> rooms = new List<Room>();
 List<User> users = new List<User>();
+static User? active_user = null;
 
 
-public void Main()
-{
+    
     bool running = true;
     while (running)
+
 
     {
         if (active_user == null)
@@ -69,7 +70,7 @@ public void Main()
 
         System.Console.WriteLine(" Wrong username or password");
     }
-}
+
 
 
 
