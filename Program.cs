@@ -60,12 +60,23 @@ while (running)
 
     else
     {
+        Console.Clear();
         System.Console.WriteLine(" -- Receptionist menu -- ");
         System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
         System.Console.WriteLine(" 2. Show all the empty rooms");
         System.Console.WriteLine(" 3. Book a guest into an available room");
         System.Console.WriteLine(" 4. Check out a guest from an occupied room");
         System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
+        string menu = Console.ReadLine();
+        switch (menu)
+        {
+            case "1": 
+            foreach (Room room in rooms)
+                    {
+                    if (room.Status)
+                }
+
+        }
     }
 
 

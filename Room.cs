@@ -3,22 +3,23 @@ namespace App;
 public class Room
 
 {
-    public string roomnumber;
-    public string user;
-    public string status;
+    public string RoomNumber;
+    public string GuestName;
+    public string Status;
 
-    public Room(string Roomnumber, string User, string Status)
+    public Room(string roomNumber, string guestName, string status)
     {
-        roomnumber = Roomnumber;
-        user = User;
-        status = Status;
+        RoomNumber = roomNumber;
+        GuestName = guestName;
+        Status = status;
 
     }
 }
 
-public enum status
+public enum Status
 {
     available,
     occupied,
-    cleanup,
+    currently_unavailable, 
+
 }
