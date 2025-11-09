@@ -21,21 +21,21 @@ User? active_user = null;
     while (running)
 
 
-    {
-        if (active_user == null)
-        {
-            System.Console.WriteLine(" 1. Log in as a receptionist ");
-            System.Console.WriteLine(" 2. Close ");
-            var menu1 = Console.ReadLine();
 
-            switch (menu1)
-            {
-                case "1": LogIn(); break;
-                case "2": running = false; break;
-            }
+  if (File.Exists("Users.txt")) 
+    {
+
+        string[] lines2 = File.ReadAllLines("Users.txt");
+        foreach (string line in lines2)
+        {
+
+            string[] data = line.Split(",");
+            users.Add(new(data[0], data[1]));
         }
 
-        else
+
+
+        
         {
             System.Console.WriteLine(" -- Receptionist menu -- ");
             System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
@@ -44,12 +44,12 @@ User? active_user = null;
             System.Console.WriteLine(" 4. Check out a guest from an occupied room");
             System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
         }
-    }
+    
 
 
 
 
-    void LogIn()
+  
     {
         System.Console.WriteLine(" Username : ");
         string username = Console.ReadLine();
