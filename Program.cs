@@ -14,7 +14,21 @@ using App;
 List<Room> rooms = new List<Room>();
 List<User> users = new List<User>();
 
-User? loggedInUser = null;
+
+public void Main()
+{
+    bool running = true;
+    while (running)
+
+    {
+        if (loggedInUser == null)
+        {
+            System.Console.WriteLine(" 1. Log in as a receptionist ");
+            System.Console.WriteLine(" 2. Close ");
+           
+        }
+    }
+}
 
 
 
