@@ -8,8 +8,8 @@ using App;
 - Boka in en gäst i ett ledigt rum
 - Checka ut en gäst från ett upptaget rum
 - Markera att ett rum , temporärt, inte är tillgängligt
-
 */
+
 
 List<Room> rooms = new List<Room>();
 List<User> users = new List<User>();
@@ -41,7 +41,7 @@ while (running)
         Console.Clear();
         System.Console.WriteLine(" Username : ");
         string username = Console.ReadLine();
-        
+
         Console.Clear();
         System.Console.WriteLine(" Password : ");
         string password = Console.ReadLine();
@@ -75,11 +75,11 @@ while (running)
                 Console.Clear();
                 foreach (Room room in rooms)
                 {
-                    if (room.Status == RoomStatus.Occupied)
+                    if (room.Status == RoomStatus.occupied)
                     {
                         System.Console.WriteLine(room.Status);
-                        System.Console.WriteLine(room.User + " is living here");
-                        System.Console.WriteLine(room.Roomnummer + "room nummber");
+                        System.Console.WriteLine(room.GuestName + " is living here");
+                        System.Console.WriteLine(room.RoomNumber + "room nummber");
                     }
                 }
                 Console.ReadLine();
@@ -88,17 +88,35 @@ while (running)
             case "2":
                 Console.Clear();
                 System.Console.WriteLine(" Available rooms : ");
-                 foreach (Room room in rooms)
-                  if (room.Status == RoomStatus.Available)
-                      {
+                foreach (Room room in rooms)
+                    if (room.Status == RoomStatus.available)
+                    {
                         Console.WriteLine(room.Status);
-                        System.Console.WriteLine(room.Roomnummer + "room nummber");
+                        System.Console.WriteLine(room.RoomNumber + "room nummber");
                     }
 
+
+                Console.ReadLine();
+                break;
+
+            case "3":
+                Console.Clear();
+                foreach (Room room in rooms)
+                    if (room.Status == RoomStatus.available)
+                    {
+                        Console.WriteLine(room.Status);
+                        System.Console.WriteLine(room.RoomNumber + "room nummber");
+                    }
+
+                System.Console.WriteLine(" What room are you do you want to book for a guest? ");
+                string number = Console.ReadLine()!;
+                Console.Clear();
+                System.Console.WriteLine(" What name would you like to book the room for? ");
+                string name = Console.ReadLine();
         }
+
+
     }
-
-
 
 
 }
