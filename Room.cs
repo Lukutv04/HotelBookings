@@ -5,9 +5,9 @@ public class Room
 {
     public string RoomNumber;
     public string GuestName;
-    public string Status;
+    public RoomStatus Status;
 
-    public Room(string roomNumber, string guestName, string status)
+    public Room(string roomNumber, string guestName, RoomStatus status)
     {
         RoomNumber = roomNumber;
         GuestName = guestName;
@@ -16,7 +16,7 @@ public class Room
     }
 }
 
-public enum Status
+public enum RoomStatus
 {
     available,
     occupied,

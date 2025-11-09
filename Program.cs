@@ -38,10 +38,11 @@ while (running)
     if (active_user == null)
 
     {
+        Console.Clear();
         System.Console.WriteLine(" Username : ");
         string username = Console.ReadLine();
+        
         Console.Clear();
-
         System.Console.WriteLine(" Password : ");
         string password = Console.ReadLine();
 
@@ -70,11 +71,21 @@ while (running)
         string menu = Console.ReadLine();
         switch (menu)
         {
-            case "1": 
-            foreach (Room room in rooms)
+            case "1":
+                Console.Clear();
+                foreach (Room room in rooms)
+                {
+                    if (room.Status == RoomStatus.Occupied)
                     {
-                    if (room.Status)
+                        System.Console.WriteLine(room.Status);
+                        System.Console.WriteLine(room.User + " is living here");
+                        System.Console.WriteLine(room.Roomnummer + "room nummber");
+                    }
                 }
+                Console.ReadLine();
+                break;
+
+       
 
         }
     }
