@@ -12,7 +12,7 @@ using App;
 */
 
 List<Room> rooms = new List<Room>();
-List<User> users = LoadUsersFromFile("User.txt");
+List<User> users = new List<User>();
 User? active_user = null;
 
 
@@ -37,7 +37,7 @@ User? active_user = null;
 
         else
         {
-            System.Console.WriteLine(" You are logged in as " + active_user.Email);
+            System.Console.WriteLine(" -- Receptionist menu -- ");
             System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
             System.Console.WriteLine(" 2. Show all the empty rooms");
             System.Console.WriteLine(" 3. Book a guest into an available room");
