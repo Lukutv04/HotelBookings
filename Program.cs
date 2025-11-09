@@ -25,7 +25,23 @@ public void Main()
         {
             System.Console.WriteLine(" 1. Log in as a receptionist ");
             System.Console.WriteLine(" 2. Close ");
-           
+            var menu1 = Console.ReadLine();
+
+            switch (menu1)
+            {
+                case "1": LogIn(); break;
+                case "2": running = false; break;
+            }
+        }
+
+        else
+        {
+            System.Console.WriteLine(" You are logged in as " + loggedInUser.Email);
+            System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
+            System.Console.WriteLine(" 2. Show all the empty rooms");
+            System.Console.WriteLine(" 3. Book a guest into an available room");
+            System.Console.WriteLine(" 4. Check out a guest from an occupied room");
+            System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
         }
     }
 }
