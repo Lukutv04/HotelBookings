@@ -85,7 +85,15 @@ while (running)
                 Console.ReadLine();
                 break;
 
-       
+            case "2":
+                Console.Clear();
+                System.Console.WriteLine(" Available rooms : ");
+                 foreach (Room room in rooms)
+                  if (room.Status == RoomStatus.Available)
+                      {
+                        Console.WriteLine(room.Status);
+                        System.Console.WriteLine(room.Roomnummer + "room nummber");
+                    }
 
         }
     }
