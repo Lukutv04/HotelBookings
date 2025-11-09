@@ -2,7 +2,7 @@ using App;
 
 /*
 
-- Logga in med uppgifter om ligger sparade i en fil
+- Logga in med uppgifter som ligger sparade i en fil
 - Se en lista av alla rum som har gäster just nu
 - Se en lista av alla lediga rum
 - Boka in en gäst i ett ledigt rum
