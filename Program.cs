@@ -21,7 +21,7 @@ public void Main()
     while (running)
 
     {
-        if (loggedInUser == null)
+        if (active_user == null)
         {
             System.Console.WriteLine(" 1. Log in as a receptionist ");
             System.Console.WriteLine(" 2. Close ");
@@ -36,13 +36,38 @@ public void Main()
 
         else
         {
-            System.Console.WriteLine(" You are logged in as " + loggedInUser.Email);
+            System.Console.WriteLine(" You are logged in as " + active_user.Email);
             System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
             System.Console.WriteLine(" 2. Show all the empty rooms");
             System.Console.WriteLine(" 3. Book a guest into an available room");
             System.Console.WriteLine(" 4. Check out a guest from an occupied room");
             System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
         }
+    }
+
+
+
+
+    void LogIn()
+    {
+        System.Console.WriteLine(" Username : ");
+        string username = Console.ReadLine();
+        Console.Clear();
+
+        System.Console.WriteLine(" Password : ");
+        string password = Console.ReadLine();
+
+        foreach (User user in users)
+        {
+            if (user.TryLogin(username, password))
+            {
+                active_user = user;
+                System.Console.WriteLine($" Welcome {user.username}!");
+                return;
+            }
+        }
+
+        System.Console.WriteLine(" Wrong username or password");
     }
 }
 

@@ -3,18 +3,18 @@ namespace App;
 public class User
 
 {
-    public string name;
+    public string username;
     public string password;
 
-    public User(string Name, string Password)
+    public User(string Username, string Password)
 
     {
-        name = Name;
+        username = Username;
         password = Password;
     }
 
-     public bool TryLogin(string inputName, string inputPassword)
+     public bool TryLogin(string inputUsername, string inputPassword)
     {
-        return name == inputName && password == inputPassword;
+        return username == inputUsername && password == inputPassword;
     }
 }
