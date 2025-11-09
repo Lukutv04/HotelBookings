@@ -12,8 +12,8 @@ using App;
 */
 
 List<Room> rooms = new List<Room>();
-List<User> users = new List<User>();
-static User? active_user = null;
+List<User> users = LoadUsersFromFile("User.txt");
+User? active_user = null;
 
 
     
