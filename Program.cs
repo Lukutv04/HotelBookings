@@ -18,11 +18,11 @@ User? active_user = null;
 
     
     bool running = true;
-    while (running)
 
 
 
-  if (File.Exists("Users.txt")) 
+
+    if (File.Exists("Users.txt"))
     {
 
         string[] lines2 = File.ReadAllLines("Users.txt");
@@ -32,24 +32,11 @@ User? active_user = null;
             string[] data = line.Split(",");
             users.Add(new(data[0], data[1]));
         }
+    }
+while (running)
+{
+    if (active_user == null)
 
-
-
-        
-        {
-            System.Console.WriteLine(" -- Receptionist menu -- ");
-            System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
-            System.Console.WriteLine(" 2. Show all the empty rooms");
-            System.Console.WriteLine(" 3. Book a guest into an available room");
-            System.Console.WriteLine(" 4. Check out a guest from an occupied room");
-            System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
-        }
-    
-
-
-
-
-  
     {
         System.Console.WriteLine(" Username : ");
         string username = Console.ReadLine();
@@ -67,10 +54,26 @@ User? active_user = null;
                 return;
             }
         }
-
         System.Console.WriteLine(" Wrong username or password");
     }
 
+
+    else
+    {
+        System.Console.WriteLine(" -- Receptionist menu -- ");
+        System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
+        System.Console.WriteLine(" 2. Show all the empty rooms");
+        System.Console.WriteLine(" 3. Book a guest into an available room");
+        System.Console.WriteLine(" 4. Check out a guest from an occupied room");
+        System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
+    }
+
+
+
+
+}
+  
+  
 
 
 
