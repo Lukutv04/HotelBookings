@@ -11,6 +11,9 @@ using App;
 */
 
 
+
+
+
 List<Room> rooms = new List<Room>();
 List<User> users = new List<User>();
 User? active_user = null;
@@ -20,19 +23,33 @@ User? active_user = null;
     bool running = true;
 
 
+if (File.Exists("Room.txt"))
+{
+    string[] lines = File.ReadAllLines("Room.txt");
+     foreach(string line in lines)
+    {
+        if (string.IsNullOrWhiteSpace(line)) continue; // hoppar över tomma rader
+        string[] data = line.Split(",");
+        string guest = data[0];
+        string number = data[1];
+        string statuss = data[2];
+    }
+    
+}
 
 
-    if (File.Exists("Users.txt"))
+
+if (File.Exists("User.txt"))
+{
+
+    string[] lines = File.ReadAllLines("User.txt");
+    foreach (string line in lines)
     {
 
-        string[] lines2 = File.ReadAllLines("Users.txt");
-        foreach (string line in lines2)
-        {
-
-            string[] data = line.Split(",");
-            users.Add(new(data[0], data[1]));
-        }
+        string[] data = line.Split(",");
+        users.Add(new(data[0], data[1]));
     }
+}
 while (running)
 {
     if (active_user == null)

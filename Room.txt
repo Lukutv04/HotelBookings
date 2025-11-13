@@ -1,0 +1,2 @@
+101, available
+102, occupied

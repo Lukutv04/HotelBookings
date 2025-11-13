@@ -14,7 +14,6 @@ public class User
     }
 
      public bool TryLogin(string inputUsername, string inputPassword)
-    {
-        return username == inputUsername && password == inputPassword; 
+    
+        => username == inputUsername && password == inputPassword; 
     }
-}
