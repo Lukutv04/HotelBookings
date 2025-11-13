@@ -33,6 +33,13 @@ if (File.Exists("Room.txt"))
         string guest = data[0];
         string number = data[1];
         string statuss = data[2];
+
+    
+         if (Enum.TryParse(statuss, out RoomStatus status)) 
+        {
+            rooms.Add(new Room(number, guest, status)); 
+        }
+
     }
     
 }
@@ -130,6 +137,7 @@ while (running)
                 Console.Clear();
                 System.Console.WriteLine(" What name would you like to book the room for? ");
                 string name = Console.ReadLine();
+                break; 
         }
 
 
