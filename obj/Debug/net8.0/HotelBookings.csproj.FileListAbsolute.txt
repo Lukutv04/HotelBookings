@@ -1,0 +1,15 @@
+/Users/lukaseriksson/GitHub/HotelBookings/bin/Debug/net8.0/HotelBookings
+/Users/lukaseriksson/GitHub/HotelBookings/bin/Debug/net8.0/HotelBookings.deps.json
+/Users/lukaseriksson/GitHub/HotelBookings/bin/Debug/net8.0/HotelBookings.runtimeconfig.json
+/Users/lukaseriksson/GitHub/HotelBookings/bin/Debug/net8.0/HotelBookings.dll
+/Users/lukaseriksson/GitHub/HotelBookings/bin/Debug/net8.0/HotelBookings.pdb
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.GeneratedMSBuildEditorConfig.editorconfig
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.AssemblyInfoInputs.cache
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.AssemblyInfo.cs
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.csproj.CoreCompileInputs.cache
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.sourcelink.json
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.dll
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/refint/HotelBookings.dll
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.pdb
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/HotelBookings.genruntimeconfig.cache
+/Users/lukaseriksson/GitHub/HotelBookings/obj/Debug/net8.0/ref/HotelBookings.dll

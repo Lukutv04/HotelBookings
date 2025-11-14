@@ -14,19 +14,37 @@ using App;
 
 
 
-List<Room> rooms = new List<Room>();
-List<User> users = new List<User>();
-User? active_user = null;
+List<Room> rooms = new List<Room>(); // Ny lista med alla rum
+List<User> users = new List<User>(); // Ny lista med alla användare
+User? active_user = null; // Kollar om ingen är inloggad
 
 
     
-    bool running = true;
+bool running = true;
 
 
-if (File.Exists("Room.txt"))
+
+
+
+
+if (File.Exists("User.txt"))
 {
-    string[] lines = File.ReadAllLines("Room.txt");
-     foreach(string line in lines)
+
+    string[] lines2 = File.ReadAllLines("User.txt");
+    foreach (string line in lines2)
+    {
+
+        string[] data = line.Split(",");
+        users.Add(new(data[0], data[1]));
+    }
+
+
+}
+
+    if (File.Exists("Room.txt"))
+{
+    string[] lines1 = File.ReadAllLines("Room.txt");
+     foreach(string line in lines1)
     {
         if (string.IsNullOrWhiteSpace(line)) continue; // hoppar över tomma rader
         string[] data = line.Split(",");
@@ -37,25 +55,11 @@ if (File.Exists("Room.txt"))
     
          if (Enum.TryParse(statuss, out RoomStatus status)) 
         {
-            rooms.Add(new Room(number, guest, status)); 
+            rooms.Add(new Room(guest, number, status)); 
         }
 
     }
     
-}
-
-
-
-if (File.Exists("User.txt"))
-{
-
-    string[] lines = File.ReadAllLines("User.txt");
-    foreach (string line in lines)
-    {
-
-        string[] data = line.Split(",");
-        users.Add(new(data[0], data[1]));
-    }
 }
 while (running)
 {
@@ -76,14 +80,24 @@ while (running)
             {
                 active_user = user;
                 System.Console.WriteLine($" Welcome {user.username}!");
-                return;
+                break;
+                
             }
         }
+
+        
+        if(active_user == null)
+        {
         System.Console.WriteLine(" Wrong username or password");
+        Console.ReadKey();
+        continue;
+        }
+        Console.ReadKey();
+        continue;
     }
 
 
-    else
+       else
     {
         Console.Clear();
         System.Console.WriteLine(" -- Receptionist menu -- ");
@@ -92,7 +106,8 @@ while (running)
         System.Console.WriteLine(" 3. Book a guest into an available room");
         System.Console.WriteLine(" 4. Check out a guest from an occupied room");
         System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
-        string menu = Console.ReadLine();
+        System.Console.WriteLine(" 6. Log out");
+        string menu = Console.ReadLine()!;
         switch (menu)
         {
             case "1":
@@ -136,8 +151,30 @@ while (running)
                 string number = Console.ReadLine()!;
                 Console.Clear();
                 System.Console.WriteLine(" What name would you like to book the room for? ");
-                string name = Console.ReadLine();
-                break; 
+                string name = Console.ReadLine()!;
+                
+                foreach(Room room in rooms)
+                {
+                    if(room.RoomNumber == number)
+                    {
+                        room.GuestName = name;
+                        room.Status = RoomStatus.occupied;
+                        break;
+                    }
+                }
+                
+                    List<string> updatedLines = new List<string>();//för att kunna hitta den speficifa raden och ändra den
+
+                foreach (var room in rooms) //säger till att varje rad i txt filen sparas och sedan läggs i stringen line och den läggs till i updated lines listan, vilket gör så att när man senare skriver in updated lines i txt filen sparas all den gamla infon förutom den som har ändrats på 
+                {
+                    string line = $"{room.RoomNumber},{room.GuestName},{room.Status}";
+                    updatedLines.Add(line);
+                }
+
+                File.WriteAllLines("Room.txt", updatedLines);
+                break;
+
+
         }
 
 

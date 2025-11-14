@@ -1,2 +1,2 @@
-receptionist, 123
-admin, 123 
+receptionist,123
+admin,123 
