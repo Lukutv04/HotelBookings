@@ -273,6 +273,23 @@ while (running)
                         break;
                     }
                 }
+
+
+                if(chosenroom == null)
+                {
+                    System.Console.WriteLine(" Room not found!");
+                    Console.ReadKey();
+                    break;
+                }
+
+
+                if(chosenroom.Status == RoomStatus.occupied)
+                {
+                    System.Console.WriteLine(" Cannot set an occupied room as unavailable! ");
+                    System.Console.WriteLine(" \n Try again! ");
+                    Console.ReadKey();
+                    break;
+                }
                 
         }
 
