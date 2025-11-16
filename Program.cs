@@ -112,15 +112,27 @@ while (running)
         {
             case "1":
                 Console.Clear();
+                System.Console.WriteLine("  Occupied rooms : ");
+
+                int count_occupied = 0; // räknar antalet upptagna rum
+
                 foreach (Room room in rooms)
                 {
                     if (room.Status == RoomStatus.occupied)
                     {
-                        System.Console.WriteLine(room.Status);
-                        System.Console.WriteLine(room.GuestName + " is living here");
-                        System.Console.WriteLine(room.RoomNumber + "room nummber");
+
+                        count_occupied++;  // ökar talet varje gång den hittar ett upptaget rum
+                        System.Console.WriteLine($" Room Number : {room.RoomNumber}");
+                        System.Console.WriteLine($" Guest Name : {room.GuestName}");
+                        System.Console.WriteLine("----------------");
                     }
                 }
+
+                if(count_occupied == 0)
+                {
+                    System.Console.WriteLine(" No rooms are currently occupied!" );
+                }
+                System.Console.WriteLine(" Press any key to continue! ");
                 Console.ReadLine();
                 break;
 
