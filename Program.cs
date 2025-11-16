@@ -236,8 +236,10 @@ while (running)
                     {
                         string rooom = room.RoomNumber + "," + room.GuestName + "," + room.Status;
                         roooms.Add(rooom);
-
                     }
+
+                    File.WriteAllLines("Room.txt", roooms);
+                    System.Console.WriteLine(" Guest checked out! ");
                 }
 
 
