@@ -239,7 +239,7 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                 System.Console.WriteLine(" Enter the room number to check out a guest from :");
                 string checkoutnumber = Console.ReadLine(); // användaren väljer ett rum genom att skriva rumsnumret och detta läser programmet in. 
 
-                Room? checkoutroom = null; // håller rum som ska checkas ut
+                Room? checkoutroom = null; // håller rum som ska checkas ut, som just nu inte har ett värde
                 foreach (Room room in rooms)
                 {
                     if (room.RoomNumber == checkoutnumber && room.Status == RoomStatus.occupied) // om statusen är occupied

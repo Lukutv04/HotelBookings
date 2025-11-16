@@ -1,12 +1,15 @@
 namespace App; 
 
-public class Room
+public class Room // rum-klassen som representerar ett hotellrum
 
 {
-    public string RoomNumber;
-    public string GuestName;
-    public RoomStatus Status;
+    // variabler som innefattar information om rummet
+    public string RoomNumber; // rummets nummer
+    public string GuestName; // namnet på gästen som bor i rummet
+    public RoomStatus Status; // statusen på rummet
 
+
+// används när man skapar ett nytt rum
     public Room(string guestName, string roomNumber, RoomStatus status)
     {
         RoomNumber = roomNumber;
@@ -16,6 +19,8 @@ public class Room
     }
 }
 
+
+// lista/enums över alla "tillstånd" ett rum kan ha
 public enum RoomStatus
 {
     available,
