@@ -242,6 +242,15 @@ while (running)
                     System.Console.WriteLine(" Guest checked out! ");
                 }
 
+                else
+                {
+                    System.Console.WriteLine(" No occupied rooms found! ");
+                }
+
+                System.Console.WriteLine(" Press any key to continue! ");
+                Console.ReadKey();
+                break;
+
 
 
 
