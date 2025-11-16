@@ -290,6 +290,23 @@ while (running)
                     Console.ReadKey();
                     break;
                 }
+
+                if (chosenroom.Status == RoomStatus.available) 
+                chosenroom.Status = RoomStatus.currently_unavailable;
+
+                else if (chosenroom.Status == RoomStatus.currently_unavailable)
+                chosenroom.Status = RoomStatus.available;
+
+                List<string> current = new List<string>();
+                foreach (Room room in rooms)
+                
+                    current.Add(room.RoomNumber + "," + room.GuestName + "," + room.Status);
+                    File.WriteAllLines("Room.txt", current);
+
+
+                    
+                
+                
                 
         }
 
