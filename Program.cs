@@ -97,9 +97,10 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
     }
 
 
-    else
+    else // om användaren nu är inloggad
     {
         Console.Clear();
+        // meny för receptionisten :
         System.Console.WriteLine(" -- Receptionist menu -- ");
         System.Console.WriteLine(" 1. Show a list of all rooms that guests are temporarily staying in");
         System.Console.WriteLine(" 2. Show all the empty rooms");
@@ -107,7 +108,7 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
         System.Console.WriteLine(" 4. Check out a guest from an occupied room");
         System.Console.WriteLine(" 5. Mark a room as temporarily unavailable");
         System.Console.WriteLine(" 6. Log out");
-        string menu = Console.ReadLine()!;
+        string menu = Console.ReadLine()!; // läser av vilket valk receptionisten gör
         switch (menu)
         {
             case "1":
@@ -116,19 +117,20 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
 
                 int count_occupied = 0; // räknar antalet upptagna rum
 
-                foreach (Room room in rooms)
+                foreach (Room room in rooms) // går igenom rum för rum
                 {
-                    if (room.Status == RoomStatus.occupied)
+                    if (room.Status == RoomStatus.occupied) // om rummet är upptaget
                     {
 
                         count_occupied++;  // ökar talet varje gång den hittar ett upptaget rum
+                        // får upp rumsnummer samt vilken gäst som bor där för de rum som är upptagna
                         System.Console.WriteLine($" Room Number : {room.RoomNumber}");
                         System.Console.WriteLine($" Guest Name : {room.GuestName}");
                         System.Console.WriteLine("----------------");
                     }
                 }
 
-                if(count_occupied == 0)
+                if(count_occupied == 0) // om inga upptagna rumm finns/hittades
                 {
                     System.Console.WriteLine(" No rooms are currently occupied!" );
                 }
@@ -144,14 +146,14 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
 
 
                 foreach (Room room in rooms)
-                    if (room.Status == RoomStatus.available)
+                    if (room.Status == RoomStatus.available) // om rummet är ledigt
                     {
-                        Console.WriteLine(room.Status);
+                        System.Console.WriteLine(room.Status);
                         System.Console.WriteLine($"Room {room.RoomNumber} ");
                         count++; // ökar varje gång vi hittar ett ledigt rum
                     }
                     
-                    if(count == 0)
+                    if(count == 0) // om inga lediga rum finns/hittades
                     {
                         System.Console.WriteLine(" No rooms available! ");
                     }
@@ -165,25 +167,25 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                 System.Console.WriteLine(" - Available rooms -");
                 foreach (Room room in rooms)
                 {
-                    if (room.Status == RoomStatus.available)
+                    if (room.Status == RoomStatus.available) // om rummet är ledigt
                     {
-                        System.Console.WriteLine($"Room {room.RoomNumber}");
+                        System.Console.WriteLine($"Room {room.RoomNumber}"); // skriver ut vilket rumn som är ledigt
                     }
                 }
 
 
                 System.Console.WriteLine(" Enter which room number you would like to book : ");
-                string number = Console.ReadLine();
+                string number = Console.ReadLine(); //läser in vilket rumsnummer som ska bokas
                 Console.Clear();
 
                 System.Console.WriteLine(" Enter guest name : ");
-                string name = Console.ReadLine();
+                string name = Console.ReadLine(); // läser in gästnamnet som ska bokas in i rummet
 
-                Room selectedRoom = null;
+                Room selectedRoom = null; // håller rummet som ska bokas
 
-                foreach (Room room in rooms)
+                foreach (Room room in rooms) // hittar rätt rum genom att gå igenom dem
                 {
-                    if (room.RoomNumber == number && room.Status == RoomStatus.available)
+                    if (room.RoomNumber == number && room.Status == RoomStatus.available) // om rummet är ledigt så bokas de
                     {
                         selectedRoom = room;
                         break; // slutar leta när vi hittat rätt rum
@@ -193,25 +195,25 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
 
                 }
 
-                if (selectedRoom != null)
+                if (selectedRoom != null) // om rummet finns och är ledigt
                 {
-                    selectedRoom.GuestName = name;
-                    selectedRoom.Status = RoomStatus.occupied;
+                    selectedRoom.GuestName = name; // ändrar till nytt gästnamn på rummet
+                    selectedRoom.Status = RoomStatus.occupied; // ändrar statusen til upptaget istället för ledigt
 
-                    List<string> rooooms = new List<string>();
+                    List<string> rooooms = new List<string>(); // ny lista som sparas till filen
 
                     foreach (Room room in rooms)
                     {
                         string rooom = room.RoomNumber + "," + room.GuestName + "," + room.Status;
-                        rooooms.Add(rooom);
+                        rooooms.Add(rooom); // lägger till varje rum i listan
                     }
 
-                    File.WriteAllLines("Room.txt", rooooms);
+                    File.WriteAllLines("Room.txt", rooooms); // skriver in uppdaterad lista till Room.txt filen
                     System.Console.WriteLine($"Booked room {selectedRoom.RoomNumber} for {selectedRoom.GuestName} ");
 
                 }
 
-                else
+                else // om inget rum hittas eller är ledigt
                 {
                     System.Console.WriteLine(" Room not found or not available");
                 }
@@ -225,22 +227,22 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                 Console.Clear();
                 System.Console.WriteLine("  Occupied rooms : ");
 
-                foreach (Room room in rooms)
+                foreach (Room room in rooms) // går igenom rum för rum för att se vilket som är upptaget
                 {
-                    if (room.Status == RoomStatus.occupied)
+                    if (room.Status == RoomStatus.occupied) // om rum är upptaget
                     {
-                        System.Console.WriteLine($"Room {room.RoomNumber} - Guest : {room.GuestName} ");
+                        System.Console.WriteLine($"Room {room.RoomNumber} - Guest : {room.GuestName} "); // skriver ut vem som bor i vilket rum
 
                     }
                 }
 
                 System.Console.WriteLine(" Enter the room number to check out a guest from :");
-                string checkoutnumber = Console.ReadLine();
+                string checkoutnumber = Console.ReadLine(); // användaren väljer ett rum genom att skriva rumsnumret och detta läser programmet in. 
 
-                Room? checkoutroom = null;
+                Room? checkoutroom = null; // håller rum som ska checkas ut
                 foreach (Room room in rooms)
                 {
-                    if (room.RoomNumber == checkoutnumber && room.Status == RoomStatus.occupied)
+                    if (room.RoomNumber == checkoutnumber && room.Status == RoomStatus.occupied) // om statusen är occupied
                     {
                         checkoutroom = room;
                         break;
@@ -248,23 +250,23 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                 }
 
 
-                if (checkoutroom != null)
+                if (checkoutroom != null) // kollar så de är rätt rum med ett värde
                 {
                     System.Console.WriteLine($" Checking out guest {checkoutroom.GuestName} from room {checkoutroom.RoomNumber}");
                     checkoutroom.GuestName = ""; // gör så att gästnamnet frösvinner ifrån listan av rum eftersom den nu är utcheckad
-                    checkoutroom.Status = RoomStatus.available; // ändrar statusen på rummet till avaiable
-                    List<string> roooms = new List<string>();
+                    checkoutroom.Status = RoomStatus.available; // ändrar statusen på rummet till available
+                    List<string> roooms = new List<string>(); // uppdaterar listan med alla rum
                     foreach (Room room in rooms)
                     {
                         string rooom = room.RoomNumber + "," + room.GuestName + "," + room.Status;
-                        roooms.Add(rooom);
+                        roooms.Add(rooom); 
                     }
 
-                    File.WriteAllLines("Room.txt", roooms);
+                    File.WriteAllLines("Room.txt", roooms); // lägger till listan/infon i textfilen
                     System.Console.WriteLine(" Guest checked out! ");
                 }
 
-                else
+                else // om inga upptagna rum finns/hittades
                 {
                     System.Console.WriteLine(" No occupied rooms found! ");
                 }
@@ -276,17 +278,19 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
 
                 case "5":
                 Console.Clear();
-                System.Console.WriteLine(" Set room as temporary unavaileble" );
+                System.Console.WriteLine(" Set room as temporary unavailable" );
                 System.Console.WriteLine(" Current rooms : ");
 
-                foreach(Room room in rooms)
+
+                // visar alla rum och statusen på de
+                foreach(Room room in rooms) 
                 
-                    System.Console.WriteLine($" Room {room.RoomNumber} | {room.Status} | Guest : {(string.IsNullOrEmpty(room.GuestName) ? "-" : room.GuestName)} "); // metod som kontrollerar om en sträng inte har något värde eller är tom. Om den är tom eller 0 värde så returneras true, annars false om ett gästnamn dyker upp.
+                System.Console.WriteLine($" Room {room.RoomNumber} | {room.Status} | Guest : {(string.IsNullOrEmpty(room.GuestName) ? "-" : room.GuestName)} "); // metod som kontrollerar om en sträng inte har något värde eller är tom. Om den är tom eller 0 värde så returneras true, annars false om ett gästnamn dyker upp.
 
                     System.Console.WriteLine(" Enter which room number you would like to set as currently unavailable : ");
-                    string setnumber = Console.ReadLine();
+                    string setnumber = Console.ReadLine(); // användaren väljer vilket rum som ska sättas som currently unavailable och numret läses in. 
 
-                    Room chosenroom = null;
+                    Room chosenroom = null; // valt rum
                     foreach(Room room in rooms)
                 {
                     if(room.RoomNumber == setnumber)
@@ -297,7 +301,7 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                 }
 
 
-                if(chosenroom == null)
+                if(chosenroom == null) // om rummet inte finns/hittades
                 {
                     System.Console.WriteLine(" Room not found!");
                     Console.ReadKey();
@@ -305,7 +309,7 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                 }
 
 
-                if(chosenroom.Status == RoomStatus.occupied)
+                if(chosenroom.Status == RoomStatus.occupied) //om rummet är upptaget så går det ej att sätta som currently unavailable
                 {
                     System.Console.WriteLine(" Cannot set an occupied room as unavailable! ");
                     System.Console.WriteLine(" \n Try again! ");
@@ -313,23 +317,26 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                     break;
                 }
 
+                // växlar mellan ledig och upptaget
                 if (chosenroom.Status == RoomStatus.available) 
                 chosenroom.Status = RoomStatus.currently_unavailable;
 
                 else if (chosenroom.Status == RoomStatus.currently_unavailable)
                 chosenroom.Status = RoomStatus.available;
 
-                List<string> current = new List<string>();
+                List<string> current = new List<string>(); // sparar infon till filen
                 foreach (Room room in rooms)
                 
                     current.Add(room.RoomNumber + "," + room.GuestName + "," + room.Status);
-                    File.WriteAllLines("Room.txt", current);
+                    File.WriteAllLines("Room.txt", current); // uppdtarerar det valda rummets status i textfilen
 
 
                     System.Console.WriteLine($" Room {chosenroom.RoomNumber} is now {chosenroom.Status}!"); // berättar för användaren vilket rum som är currrently unavailable
                     System.Console.WriteLine(" Press any key to continue! ");
                     Console.ReadKey();
                     break;
+
+                    
                 
                 
                 
