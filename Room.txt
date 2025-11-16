@@ -1,3 +1,5 @@
-Anna,101,occupied
-Lars,102,occupied
-noone,103,available
+101,Anna,occupied
+102,Lars,occupied
+103,Lukas,occupied
+noone,104,available
+noone,105,available

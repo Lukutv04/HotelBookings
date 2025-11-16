@@ -7,7 +7,7 @@ public class Room
     public string GuestName;
     public RoomStatus Status;
 
-    public Room(string roomNumber, string guestName, RoomStatus status)
+    public Room(string guestName, string roomNumber, RoomStatus status)
     {
         RoomNumber = roomNumber;
         GuestName = guestName;
