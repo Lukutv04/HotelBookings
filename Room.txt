@@ -3,3 +3,5 @@
 103,,available
 noone,104,currently_unavailable
 Lukaku,105,occupied
+Sigge,106,available
+Felix,107,available

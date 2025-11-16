@@ -20,80 +20,80 @@ User? active_user = null; // Kollar om ingen är inloggad
 
 
 
-bool running = true;
+bool running = true; // kör programmet så länge huvudloopen är true
 
 
 
 
 
-
-if (File.Exists("User.txt"))
+//hela denna gör så att programmet kan läsa av alla användare ifrån User.txt filen
+if (File.Exists("User.txt")) // kollar om filen "User.txt" existerar
 {
 
-    string[] lines2 = File.ReadAllLines("User.txt");
-    foreach (string line in lines2)
+    string[] lines2 = File.ReadAllLines("User.txt"); // Läser in alla rader i filen
+    foreach (string line in lines2) // går igenom varje rad i filen
     {
 
-        string[] data = line.Split(",");
-        users.Add(new(data[0], data[1]));
+        string[] data = line.Split(","); // delar upp username och password
+        users.Add(new(data[0], data[1])); // skapar en ny user och lägger till i listan med hjälp av ett username och ett password
     }
 
 
 }
 
-if (File.Exists("Room.txt"))
+// hela denna läser in alla rum ifrån Room.txt filen
+if (File.Exists("Room.txt")) // kollar ifall Room.txt filen existerar
 {
-    string[] lines1 = File.ReadAllLines("Room.txt");
-    foreach (string line in lines1)
+    string[] lines1 = File.ReadAllLines("Room.txt"); // läser in varje rad i filen
+    foreach (string line in lines1) // går igenom varje rad
     {
         if (string.IsNullOrWhiteSpace(line)) continue; // hoppar över tomma rader
-        string[] data = line.Split(",");
-        string guest = data[0];
-        string number = data[1];
-        string statuss = data[2];
+        string[] data = line.Split(","); // delar upp en rad i filen med 3 olika typer som jag skrev nedanför
+        string guest = data[0]; // gäst namnet först
+        string number = data[1]; // sedan rums-numret
+        string statuss = data[2]; // och sista statusen på rummet
 
 
-        if (Enum.TryParse(statuss, out RoomStatus status))
+        if (Enum.TryParse(statuss, out RoomStatus status)) // omvandlar text till enum-värde
         {
-            rooms.Add(new Room(guest, number, status));
+            rooms.Add(new Room(guest, number, status)); // skapar nytt rum och lägger till i listan genom gästnamn, rumsnummer, status
         }
 
     }
 
 }
-while (running)
+while (running) // huvudloop som kör tills använadren avslutar hela programmet
 {
-    if (active_user == null)
+    if (active_user == null) // om ingen är inloggad 
 
     {
-        Console.Clear();
+        Console.Clear(); // tar bort all tidigare text osv
         System.Console.WriteLine(" Username : ");
-        string username = Console.ReadLine();
+        string username = Console.ReadLine(); // läser in användarnamnet
 
         Console.Clear();
         System.Console.WriteLine(" Password : ");
-        string password = Console.ReadLine();
+        string password = Console.ReadLine(); // läser in lösenordet
 
-        foreach (User user in users)
+        foreach (User user in users) // går igenom alla användare
         {
-            if (user.TryLogin(username, password))
+            if (user.TryLogin(username, password)) // kontrollerar användarnamnet och lösenordet
             {
-                active_user = user;
+                active_user = user; // sätter använadren till en aktiv användare
                 System.Console.WriteLine($" Welcome {user.username}!");
-                break;
+                break; // stoppar loopen när en match hittas
 
             }
         }
 
 
-        if (active_user == null)
+        if (active_user == null) // om ingen användare hittades
         {
             System.Console.WriteLine(" Wrong username or password");
-            Console.ReadKey();
-            continue;
+            Console.ReadKey(); // användaren kan nu se felmeddelandet och trycka på vilken tangent som helst för att gå vidare
+            continue; // hoppar tillbaka till att göra en ny inloggning
         }
-        Console.ReadKey();
-        continue;
+      
     }
 
 
