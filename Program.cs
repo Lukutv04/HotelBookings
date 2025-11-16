@@ -176,15 +176,15 @@ while (running)
                     selectedRoom.GuestName = name;
                     selectedRoom.Status = RoomStatus.occupied;
 
-                    List<string> lines = new List<string>();
+                    List<string> rooooms = new List<string>();
 
                     foreach (Room room in rooms)
                     {
-                        string line = room.RoomNumber + "," + room.GuestName + "," + room.Status;
-                        lines.Add(line);
+                        string rooom = room.RoomNumber + "," + room.GuestName + "," + room.Status;
+                        rooooms.Add(rooom);
                     }
 
-                    File.WriteAllLines("Room.txt", lines);
+                    File.WriteAllLines("Room.txt", rooooms);
                     System.Console.WriteLine($"Booked room {selectedRoom.RoomNumber} for {selectedRoom.GuestName} ");
 
                 }
@@ -252,9 +252,28 @@ while (running)
                 break;
 
 
+                case "5":
+                Console.Clear();
+                System.Console.WriteLine(" Set room as temporary unavaileble" );
+                System.Console.WriteLine(" Current rooms : ");
 
+                foreach(Room room in rooms)
+                
+                    System.Console.WriteLine($" Room {room.RoomNumber} | {room.Status} | Guest : {(string.IsNullOrEmpty(room.GuestName) ? "-" : room.GuestName)} "); // metod som kontrollerar om en sträng inte har något värde eller är tom. Om den är tom eller 0 värde så returneras true, annars false om ett gästnamn dyker upp.
 
+                    System.Console.WriteLine(" Enter which room number you would like to set as currently unavailable : ");
+                    string setnumber = Console.ReadLine();
 
+                    Room chosenroom = null;
+                    foreach(Room room in rooms)
+                {
+                    if(room.RoomNumber == setnumber)
+                    {
+                        chosenroom = room;
+                        break;
+                    }
+                }
+                
         }
 
 
