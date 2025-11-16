@@ -212,7 +212,23 @@ while (running)
                     }
                 }
 
-              
+                System.Console.WriteLine(" Enter the room number to check out a guest from :");
+                string checkoutnumber = Console.ReadLine();
+
+                Room? checkoutroom = null;
+                foreach(Room room in rooms)
+                {
+                    if(room.RoomNumber == checkoutnumber && room.Status == RoomStatus.occupied)
+                    {
+                        checkoutroom = room;
+                        break;
+                    }
+                }
+
+
+               
+
+
 
 
         }
