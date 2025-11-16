@@ -199,13 +199,13 @@ while (running)
                 break;
 
 
-                case "4":
+            case "4":
                 Console.Clear();
                 System.Console.WriteLine("  Occupied rooms : ");
 
-                foreach(Room room in rooms)
+                foreach (Room room in rooms)
                 {
-                    if(room.Status == RoomStatus.occupied)
+                    if (room.Status == RoomStatus.occupied)
                     {
                         System.Console.WriteLine($"Room {room.RoomNumber} - Guest : {room.GuestName} ");
 
@@ -216,9 +216,9 @@ while (running)
                 string checkoutnumber = Console.ReadLine();
 
                 Room? checkoutroom = null;
-                foreach(Room room in rooms)
+                foreach (Room room in rooms)
                 {
-                    if(room.RoomNumber == checkoutnumber && room.Status == RoomStatus.occupied)
+                    if (room.RoomNumber == checkoutnumber && room.Status == RoomStatus.occupied)
                     {
                         checkoutroom = room;
                         break;
@@ -226,7 +226,20 @@ while (running)
                 }
 
 
-               
+                if (checkoutroom != null)
+                {
+                    System.Console.WriteLine($" Checking out guest {checkoutroom.GuestName} from room {checkoutroom.RoomNumber}");
+                    checkoutroom.GuestName = ""; // gör så att gästnamnet frösvinner ifrån listan av rum eftersom den nu är utcheckad
+                    checkoutroom.Status = RoomStatus.available; // ändrar statusen på rummet till avaiable
+                    List<string> roooms = new List<string>();
+                    foreach (Room room in rooms)
+                    {
+                        string rooom = room.RoomNumber + "," + room.GuestName + "," + room.Status;
+                        roooms.Add(rooom);
+
+                    }
+                }
+
 
 
 
