@@ -340,7 +340,7 @@ while (running) // huvudloop som kör tills använadren avslutar hela programmet
                     case"6":
                     Console.Clear();
                     active_user = null; // tar bort den inloggade användaren
-                    System.Console.WriteLine(" you have been loggedout, press any key to continue to log in!");
+                    System.Console.WriteLine(" you have been logged out, press any key to continue to log in!");
                     Console.ReadKey();
                     break;
                 
