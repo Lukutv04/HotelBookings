@@ -198,13 +198,21 @@ while (running)
                 Console.ReadKey();
                 break;
 
-/*
+
                 case "4":
                 Console.Clear();
                 System.Console.WriteLine("  Occupied rooms : ");
 
-*/
+                foreach(Room room in rooms)
+                {
+                    if(room.Status == RoomStatus.occupied)
+                    {
+                        System.Console.WriteLine($"Room {room.RoomNumber} - Guest : {room.GuestName} ");
 
+                    }
+                }
+
+              
 
 
         }
