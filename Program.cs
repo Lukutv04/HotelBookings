@@ -127,14 +127,24 @@ while (running)
             case "2":
                 Console.Clear();
                 System.Console.WriteLine(" Available rooms : ");
+
+                int count = 0; // räknar antalet lediga rum
+
+
                 foreach (Room room in rooms)
                     if (room.Status == RoomStatus.available)
                     {
                         Console.WriteLine(room.Status);
-                        System.Console.WriteLine(room.RoomNumber + "room nummber");
+                        System.Console.WriteLine($"Room {room.RoomNumber} ");
+                        count++; // ökar varje gång vi hittar ett ledigt rum
+                    }
+                    
+                    if(count == 0)
+                    {
+                        System.Console.WriteLine(" No rooms available! ");
                     }
 
-
+                System.Console.WriteLine("\n Press any key to continue!");
                 Console.ReadLine();
                 break;
 
@@ -304,7 +314,10 @@ while (running)
                     File.WriteAllLines("Room.txt", current);
 
 
-                    
+                    System.Console.WriteLine($" Room {chosenroom.RoomNumber} is now {chosenroom.Status}!"); // berättar för användaren vilket rum som är currrently unavailable
+                    System.Console.WriteLine(" Press any key to continue! ");
+                    Console.ReadKey();
+                    break;
                 
                 
                 
